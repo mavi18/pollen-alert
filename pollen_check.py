@@ -9,7 +9,7 @@ def get_pollen_data(lat, lon):
     response.raise_for_status()
     return response.json()
 
-def process_data(data, target_allergens, threshold):
+def process_data(data, target_allergens):
     hourly = data['hourly']
     times = hourly['time']
     daily_data = {}
@@ -47,6 +47,7 @@ def main():
     ntfy_topic = os.getenv('NTFY_TOPIC')
     allergens_str = os.getenv('ALLERGENS', 'birch,grass,ragweed,alder,mugwort')
     threshold = float(os.getenv('THRESHOLD', '10'))
+    lang = os.getenv('LANG', 'en').lower()
 
     target_allergens = [a.strip().lower() for a in allergens_str.split(',')]
     
@@ -54,16 +55,41 @@ def main():
     supported = ['alder', 'birch', 'grass', 'mugwort', 'ragweed']
     monitored = [a for a in target_allergens if a in supported]
 
+    # Translation map
+    translations = {
+        'en': {
+            'good_news_title': "☀️ Good News: Low Pollen!",
+            'good_news_msg': f"All monitored allergens are below {threshold} grains/m³ for the next 3 days.",
+            'warning_title': "🌿 Warning: High Pollen!",
+            'warning_msg': "High levels today ({date}): {details}",
+            'no_supported': "No supported allergens found in ALLERGENS list.",
+            'names': {'alder': 'Alder', 'birch': 'Birch', 'grass': 'Grass', 'mugwort': 'Mugwort', 'ragweed': 'Ragweed'}
+        },
+        'sk': {
+            'good_news_title': "☀️ Dobrá správa: Nízka hladina peľu!",
+            'good_news_msg': f"Všetky sledované alergény sú pod hranicou {threshold} zŕn/m³ na nasledujúce 3 dni.",
+            'warning_title': "🌿 Výstraha: Vysoká hladina peľu!",
+            'warning_msg': "Dnes ({date}) sú namerané vysoké hladiny: {details}",
+            'no_supported': "V zozname ALLERGENS sa nenašli žiadne podporované alergény.",
+            'names': {'alder': 'Jelša', 'birch': 'Breza', 'grass': 'Tráva', 'mugwort': 'Palina', 'ragweed': 'Ambrózia'}
+        }
+    }
+
+    t = translations.get(lang, translations['en'])
+
     if not monitored:
-        print("No supported allergens found in ALLERGENS list.")
+        print(t['no_supported'])
         return
 
     # Fetch and process
     raw_data = get_pollen_data(lat, lon)
-    processed_daily = process_data(raw_data, monitored, threshold)
+    processed_daily = process_data(raw_data, monitored)
 
     # Logic for notifications
-    today_date = datetime.now().strftime('%Y-%m-%d')
+    today_date_obj = datetime.now()
+    today_date_str = today_date_obj.strftime('%Y-%m-%d')
+    display_date = today_date_obj.strftime('%d.%m.%Y' if lang == 'sk' else '%m/%d/%Y')
+    
     three_day_window = processed_daily[:3] # Today + next 2 days
     
     is_all_low = True
@@ -73,22 +99,23 @@ def main():
         for allergen, val in day['allergens'].items():
             if val >= threshold:
                 is_all_low = False
-                if day['date'] == today_date:
-                    high_today_info.append(f"{allergen.capitalize()}: {val:.1f}")
+                if day['date'] == today_date_str:
+                    name = t['names'].get(allergen, allergen.capitalize())
+                    high_today_info.append(f"{name}: {val:.1f}")
 
     if ntfy_topic:
         if is_all_low:
             send_notification(
                 ntfy_topic, 
-                "☀️ Good News: Low Pollen!", 
-                f"All monitored allergens are below {threshold} grains/m³ for the next 3 days.",
+                t['good_news_title'], 
+                t['good_news_msg'],
                 priority="low"
             )
         elif high_today_info:
             send_notification(
                 ntfy_topic, 
-                "🌿 Warning: High Pollen!", 
-                f"High levels today ({today_date}): {', '.join(high_today_info)}",
+                t['warning_title'], 
+                t['warning_msg'].format(date=display_date, details=', '.join(high_today_info)),
                 priority="high"
             )
 
@@ -97,7 +124,8 @@ def main():
         "last_updated": datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         "city_coords": [float(lat), float(lon)],
         "threshold": threshold,
-        "daily_data": processed_daily
+        "daily_data": processed_daily,
+        "lang": lang
     }
 
     with open('data.json', 'w') as f:

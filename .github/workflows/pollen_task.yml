@@ -29,6 +29,7 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           ALLERGENS: ${{ secrets.ALLERGENS }}
           THRESHOLD: ${{ secrets.THRESHOLD }}
+          LANG: ${{ secrets.LANG }}
         run: python pollen_check.py
 
       - name: Commit and push changes
@@ -36,5 +37,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git commit -m "Update pollen data: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
+          git commit -m "Aktualizácia peľových údajov: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "Žiadne zmeny na commit"
           git push

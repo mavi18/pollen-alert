@@ -5,7 +5,7 @@ A lightweight, automated system that monitors pollen levels in Slovakia, sends p
 ## 🚀 How it Works
 1. **GitHub Action:** Runs every day at 7:00 AM CET.
 2. **Backend (Python):** Fetches data from Open-Meteo Air Quality API for your city.
-3. **Notifications:** Sends a "Warning" if pollen is high today, or "Good News" if it's low for the next 3 days.
+3. **Notifications:** Sends a "Warning" if pollen is high today, or "Good News" if it's low for the next 3 days (notifications are in Slovak).
 4. **Dashboard:** Updates a `data.json` file used by the GitHub Pages dashboard.
 
 ---
@@ -31,8 +31,9 @@ Add the following:
 *   `NTFY_TOPIC`: Your unique ntfy topic name.
 *   `ALLERGENS`: Comma-separated list (e.g., `birch,grass,ragweed,alder,mugwort`).
 *   `THRESHOLD`: The grain/m³ limit (default is `10`).
+*   `LANG`: Notification language (`en` or `sk`). Defaults to `en`.
 
-> **Note on "Ash" Pollen:** Open-Meteo does not currently provide specific "Ash" data. You can monitor `alder`, `birch`, `grass`, `mugwort`, and `ragweed`.
+> **Dashboard Language:** The web dashboard has a toggle (EN/SK) in the top right corner. It will remember your last choice locally.
 
 ### 4. Enable GitHub Pages
 1. Go to **Settings > Pages**.
@@ -43,7 +44,7 @@ Add the following:
 ---
 
 ## 📊 Dashboard Preview
-The dashboard includes:
+The dashboard (in Slovak) includes:
 *   **Traffic Lights:** Green (< Threshold), Orange (> Threshold), Red (> 5x Threshold).
 *   **5-Day Trend:** A line chart showing forecasted pollen levels.
 

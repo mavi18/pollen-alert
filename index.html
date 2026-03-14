@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slovakia Pollen Dashboard</title>
+    <title>Pollen Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -13,6 +13,7 @@
             --green: #2ecc71;
             --orange: #f39c12;
             --red: #e74c3c;
+            --accent: #3498db;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -28,7 +29,33 @@
             max-width: 600px;
             width: 100%;
         }
-        h1 { font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        h1 { font-size: 1.2rem; margin: 0; }
+        .lang-switch {
+            background: #ddd;
+            padding: 5px;
+            border-radius: 20px;
+            display: flex;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .lang-btn {
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
         .last-updated { font-size: 0.8rem; color: #666; text-align: center; margin-bottom: 1.5rem; }
         
         .status-grid {
@@ -62,14 +89,20 @@
         }
         @media (max-width: 480px) {
             body { padding: 10px; }
-            h1 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🇸🇰 Pollen Alert Slovakia</h1>
-        <div id="lastUpdated" class="last-updated">Loading data...</div>
+        <header>
+            <h1 id="mainTitle">Pollen Alert Slovakia</h1>
+            <div class="lang-switch" onclick="toggleLang()">
+                <div id="btnEn" class="lang-btn">EN</div>
+                <div id="btnSk" class="lang-btn">SK</div>
+            </div>
+        </header>
+        
+        <div id="lastUpdated" class="last-updated">Loading...</div>
 
         <div id="statusGrid" class="status-grid"></div>
 
@@ -79,69 +112,118 @@
     </div>
 
     <script>
+        const translations = {
+            en: {
+                title: "Pollen Alert Slovakia",
+                lastUpdated: "Last updated: ",
+                unit: "grains/m³",
+                trend: "5-Day Trend",
+                error: "Error loading data.json. Ensure the GitHub Action has run.",
+                names: {'alder': 'Alder', 'birch': 'Birch', 'grass': 'Grass', 'mugwort': 'Mugwort', 'ragweed': 'Ragweed'}
+            },
+            sk: {
+                title: "Peľové spravodajstvo SR",
+                lastUpdated: "Naposledy aktualizované: ",
+                unit: "zŕn/m³",
+                trend: "5-dňový trend",
+                error: "Chyba pri načítaní data.json. Skontrolujte GitHub Action.",
+                names: {'alder': 'Jelša', 'birch': 'Breza', 'grass': 'Tráva', 'mugwort': 'Palina', 'ragweed': 'Ambrózia'}
+            }
+        };
+
+        let currentLang = localStorage.getItem('pollenLang') || 'en';
+        let globalData = null;
+        let myChart = null;
+
+        function updateLangUI() {
+            document.getElementById('btnEn').classList.toggle('active', currentLang === 'en');
+            document.getElementById('btnSk').classList.toggle('active', currentLang === 'sk');
+            if (globalData) renderData();
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'sk' : 'en';
+            localStorage.setItem('pollenLang', currentLang);
+            updateLangUI();
+        }
+
+        async function renderData() {
+            const t = translations[currentLang];
+            document.getElementById('mainTitle').innerText = t.title;
+            
+            const locale = currentLang === 'sk' ? 'sk-SK' : 'en-US';
+            document.getElementById('lastUpdated').innerText = t.lastUpdated + new Date(globalData.last_updated).toLocaleString(locale);
+            
+            const todayData = globalData.daily_data[0];
+            const threshold = globalData.threshold;
+            const statusGrid = document.getElementById('statusGrid');
+            statusGrid.innerHTML = '';
+            
+            Object.entries(todayData.allergens).forEach(([name, value]) => {
+                const card = document.createElement('div');
+                card.className = 'status-card';
+                let color = 'var(--green)';
+                if (value >= threshold * 5) color = 'var(--red)';
+                else if (value >= threshold) color = 'var(--orange)';
+                
+                card.innerHTML = `
+                    <h3>${t.names[name] || name}</h3>
+                    <div class="traffic-light" style="background-color: ${color}"></div>
+                    <div class="val">${value.toFixed(1)}</div>
+                    <div class="unit">${t.unit}</div>
+                `;
+                statusGrid.appendChild(card);
+            });
+
+            const labels = globalData.daily_data.map(d => {
+                const parts = d.date.split('-');
+                return currentLang === 'sk' ? `${parts[2]}.${parts[1]}.` : `${parts[1]}/${parts[2]}`;
+            });
+
+            const datasets = Object.keys(todayData.allergens).map((name, index) => {
+                const colors = ['#3498db', '#e67e22', '#9b59b6', '#1abc9c', '#f1c40f'];
+                return {
+                    label: t.names[name] || name,
+                    data: globalData.daily_data.map(d => d.allergens[name]),
+                    borderColor: colors[index % colors.length],
+                    tension: 0.3,
+                    fill: false
+                };
+            });
+
+            if (myChart) myChart.destroy();
+            const ctx = document.getElementById('pollenChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: t.trend }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: t.unit } }
+                    }
+                }
+            });
+        }
+
         async function loadData() {
             try {
                 const response = await fetch('data.json');
-                const data = await response.json();
-                
-                document.getElementById('lastUpdated').innerText = `Last updated: ${new Date(data.last_updated).toLocaleString()}`;
-                
-                const todayData = data.daily_data[0];
-                const threshold = data.threshold;
-                const statusGrid = document.getElementById('statusGrid');
-                
-                // Traffic Lights
-                Object.entries(todayData.allergens).forEach(([name, value]) => {
-                    const card = document.createElement('div');
-                    card.className = 'status-card';
-                    
-                    let color = 'var(--green)';
-                    if (value >= threshold * 5) color = 'var(--red)';
-                    else if (value >= threshold) color = 'var(--orange)';
-                    
-                    card.innerHTML = `
-                        <h3>${name}</h3>
-                        <div class="traffic-light" style="background-color: ${color}"></div>
-                        <div class="val">${value.toFixed(1)}</div>
-                        <div class="unit">grains/m³</div>
-                    `;
-                    statusGrid.appendChild(card);
-                });
-
-                // Chart.js
-                const ctx = document.getElementById('pollenChart').getContext('2d');
-                const labels = data.daily_data.map(d => d.date.split('-').slice(1).reverse().join('.')); // MM.DD -> DD.MM
-                const datasets = Object.keys(todayData.allergens).map((name, index) => {
-                    const colors = ['#3498db', '#e67e22', '#9b59b6', '#1abc9c', '#f1c40f'];
-                    return {
-                        label: name.charAt(0).toUpperCase() + name.slice(1),
-                        data: data.daily_data.map(d => d.allergens[name]),
-                        borderColor: colors[index % colors.length],
-                        tension: 0.3,
-                        fill: false
-                    };
-                });
-
-                new Chart(ctx, {
-                    type: 'line',
-                    data: { labels, datasets },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'bottom' },
-                            title: { display: true, text: '5-Day Trend' }
-                        },
-                        scales: {
-                            y: { beginAtZero: true, title: { display: true, text: 'grains/m³' } }
-                        }
-                    }
-                });
-
+                globalData = await response.json();
+                // Use backend lang as default if no local preference exists
+                if (!localStorage.getItem('pollenLang')) {
+                    currentLang = globalData.lang || 'en';
+                }
+                updateLangUI();
             } catch (e) {
                 console.error(e);
-                document.getElementById('lastUpdated').innerText = "Error loading data.json. Ensure the GitHub Action has run.";
+                document.getElementById('lastUpdated').innerText = translations[currentLang].error;
             }
         }
+
         loadData();
     </script>
 </body>
