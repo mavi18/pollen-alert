@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slovakia Pollen Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --green: #2ecc71;
+            --orange: #f39c12;
+            --red: #e74c3c;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 { font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; }
+        .last-updated { font-size: 0.8rem; color: #666; text-align: center; margin-bottom: 1.5rem; }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .status-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .status-card h3 { margin: 0; font-size: 0.9rem; text-transform: capitalize; }
+        .traffic-light {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+        .val { font-weight: bold; font-size: 1.1rem; }
+        .unit { font-size: 0.7rem; color: #888; }
+
+        .chart-container {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇸🇰 Pollen Alert Slovakia</h1>
+        <div id="lastUpdated" class="last-updated">Loading data...</div>
+
+        <div id="statusGrid" class="status-grid"></div>
+
+        <div class="chart-container">
+            <canvas id="pollenChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                document.getElementById('lastUpdated').innerText = `Last updated: ${new Date(data.last_updated).toLocaleString()}`;
+                
+                const todayData = data.daily_data[0];
+                const threshold = data.threshold;
+                const statusGrid = document.getElementById('statusGrid');
+                
+                // Traffic Lights
+                Object.entries(todayData.allergens).forEach(([name, value]) => {
+                    const card = document.createElement('div');
+                    card.className = 'status-card';
+                    
+                    let color = 'var(--green)';
+                    if (value >= threshold * 5) color = 'var(--red)';
+                    else if (value >= threshold) color = 'var(--orange)';
+                    
+                    card.innerHTML = `
+                        <h3>${name}</h3>
+                        <div class="traffic-light" style="background-color: ${color}"></div>
+                        <div class="val">${value.toFixed(1)}</div>
+                        <div class="unit">grains/m³</div>
+                    `;
+                    statusGrid.appendChild(card);
+                });
+
+                // Chart.js
+                const ctx = document.getElementById('pollenChart').getContext('2d');
+                const labels = data.daily_data.map(d => d.date.split('-').slice(1).reverse().join('.')); // MM.DD -> DD.MM
+                const datasets = Object.keys(todayData.allergens).map((name, index) => {
+                    const colors = ['#3498db', '#e67e22', '#9b59b6', '#1abc9c', '#f1c40f'];
+                    return {
+                        label: name.charAt(0).toUpperCase() + name.slice(1),
+                        data: data.daily_data.map(d => d.allergens[name]),
+                        borderColor: colors[index % colors.length],
+                        tension: 0.3,
+                        fill: false
+                    };
+                });
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: { labels, datasets },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            title: { display: true, text: '5-Day Trend' }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'grains/m³' } }
+                        }
+                    }
+                });
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('lastUpdated').innerText = "Error loading data.json. Ensure the GitHub Action has run.";
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>

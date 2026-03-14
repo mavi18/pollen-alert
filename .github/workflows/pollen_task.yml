@@ -1,0 +1,40 @@
+name: Pollen Check Task
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # 7:00 AM CET (Standard Time)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  check-pollen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run pollen check
+        env:
+          LAT: ${{ secrets.LAT }}
+          LON: ${{ secrets.LON }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          ALLERGENS: ${{ secrets.ALLERGENS }}
+          THRESHOLD: ${{ secrets.THRESHOLD }}
+        run: python pollen_check.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "Update pollen data: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
+          git push
