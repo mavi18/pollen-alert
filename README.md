@@ -20,7 +20,7 @@ Go to [Google Maps](https://www.google.com/maps) or [LatLong.net](https://www.la
 ### 2. Set Up ntfy on iPhone
 1. Download the **ntfy** app from the iOS App Store.
 2. Open the app and click **"+"** to subscribe to a new topic.
-3. Choose a unique name (e.g., `pollen-alert-bratislava-123`).
+3. Choose a unique name.
 4. Keep this name for the `NTFY_TOPIC` secret.
 
 ### 3. Configure GitHub Secrets

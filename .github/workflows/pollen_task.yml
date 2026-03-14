@@ -2,7 +2,7 @@ name: Pollen Check Task
 
 on:
   schedule:
-    - cron: '0 6 * * *' # 7:00 AM CET (Standard Time)
+    - cron: '0 14 * * *' # 7:00 AM CET (Standard Time)
   workflow_dispatch: # Allow manual trigger
 
 jobs:
