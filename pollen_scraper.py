@@ -2,7 +2,6 @@ import os
 import json
 import requests
 import socket
-from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 
 # Force IPv4 for GitHub Actions compatibility
@@ -12,19 +11,11 @@ def allowed_gai_family():
 urllib3_cn.allowed_gai_family = allowed_gai_family
 
 # Configuration
-URL = "https://www.pelovespravodajstvo.sk/verejnost/aktualne"
+# Use the hidden JSON API endpoint
+API_URL_TEMPLATE = "https://www.pelovespravodajstvo.sk/verejnost/xml/getallcities/?kraj={kraj_id}"
 DATA_FILE = "pollen_data_sk.json"
 NTFY_TOPIC = os.getenv('NTFY_TOPIC')
 KRAJ_ID = os.getenv('KRAJ_ID', '1') # Default: 1 (Bratislava)
-
-LEVEL_MAP = {
-    "koncentracia_0.png": 0,
-    "koncentracia_1.png": 1,
-    "koncentracia_2.png": 2,
-    "koncentracia_3.png": 3,
-    "koncentracia_4.png": 4,
-    "koncentracia_5.png": 5
-}
 
 LEVEL_NAMES = {
     0: "Nulová",
@@ -43,34 +34,34 @@ TREND_MAP = {
     "koncentracia_stav_zvysenie.png": "⬆️ Stúpa"
 }
 
+def get_level(value):
+    val = float(value) if value else 0
+    if val == 0: return 0
+    if val <= 5: return 1
+    if val <= 30: return 2
+    if val <= 50: return 3
+    if val <= 150: return 4
+    return 5
+
 def scrape_data(kraj_id):
+    url = API_URL_TEMPLATE.format(kraj_id=kraj_id)
     headers = {'User-Agent': 'Mozilla/5.0'}
-    data = {'kraj': kraj_id}
-    response = requests.post(URL, headers=headers, data=data)
+    response = requests.get(url, headers=headers)
     response.raise_for_status()
     
-    soup = BeautifulSoup(response.text, 'html.parser')
+    raw_data = response.json()
     results = {}
     
-    # Target the "Top 5" or any available allergens in the select containers
-    items = soup.select('.selectCnt label')
-    for item in items:
-        name = item.get_text(strip=True)
+    for item in raw_data:
+        name = item.get('alergen')
         if not name: continue
         
-        imgs = item.find_all('img')
-        level = 0
-        trend = "➡️ Ustálená"
-        
-        for img in imgs:
-            src = img.get('src', '')
-            filename = src.split('/')[-1]
-            if "koncentracia_" in filename and "stav" not in filename:
-                level = LEVEL_MAP.get(filename, 0)
-            elif "koncentracia_stav_" in filename:
-                trend = TREND_MAP.get(filename, "➡️ Ustálená")
-        
-        results[name] = {"level": level, "trend": trend}
+        # Mapping to match existing dashboard structure
+        results[name] = {
+            "level": get_level(item.get('value', 0)),
+            "value": item.get('value', 0),
+            "trend": TREND_MAP.get(item.get('prognose', '').split('/')[-1], "➡️ Ustálená")
+        }
     
     return results
 
@@ -86,28 +77,36 @@ def send_notification(title, message, priority="default"):
         }
     )
 
-def compare_and_notify(new_data, old_data):
-    if not old_data:
-        return True # First run, always save
+def compare_and_notify(new_data, old_history):
+    if not old_history:
+        return True # First run
     
-    last_entry = old_data[-1]['allergens']
-    if last_entry == new_data:
-        print("Data is identical to the last record. No update needed.")
+    last_entry = old_history[-1]['allergens']
+    
+    # Compare levels only (ignore small value fluctuations)
+    current_levels = {k: v['level'] for k, v in new_data.items()}
+    last_levels = {k: v['level'] for k, v in last_entry.items()}
+    
+    if current_levels == last_levels:
+        print("Pollen levels are identical to the last record. No update needed.")
         return False
 
     # Check for significant changes
     changes = []
-    for allergen, info in new_data.items():
-        old_info = last_entry.get(allergen, {"level": 0, "trend": ""})
-        diff = info['level'] - old_info['level']
+    # Use union of keys to catch new allergens appearing
+    all_allergens = set(current_levels.keys()) | set(last_levels.keys())
+    
+    for allergen in all_allergens:
+        new_lvl = current_levels.get(allergen, 0)
+        old_lvl = last_levels.get(allergen, 0)
         
-        if abs(diff) >= 1: # Level changed
-            action = "stúpla" if diff > 0 else "klesla"
-            changes.append(f"{allergen} {action} na {LEVEL_NAMES[info['level']]} ({info['trend']})")
+        if new_lvl != old_lvl:
+            action = "stúpla" if new_lvl > old_lvl else "klesla"
+            changes.append(f"{allergen}: {LEVEL_NAMES[old_lvl]} -> {LEVEL_NAMES[new_lvl]} ({new_data.get(allergen, {}).get('trend', '')})")
     
     if changes:
-        title = "📊 Zmena hladiny peľu (Štátny monitoring)"
-        message = "\n".join(changes)
+        title = "📊 Zmena peľovej situácie (Štátny monitoring)"
+        message = "Boli zaznamenané zmeny:\n" + "\n".join(changes)
         send_notification(title, message, priority="high")
     
     return True
@@ -116,7 +115,7 @@ def main():
     try:
         current_pollen = scrape_data(KRAJ_ID)
         if not current_pollen:
-            print("No data scraped. Check site structure.")
+            print("No data received from API.")
             return
 
         # Load history
@@ -133,8 +132,8 @@ def main():
             }
             history.append(new_record)
             
-            # Keep only last 10 records to keep file small
-            history = history[-10:]
+            # Keep only last 12 records (approx 3 months of weekly updates)
+            history = history[-12:]
             
             with open(DATA_FILE, 'w') as f:
                 json.dump(history, f, indent=2, ensure_ascii=False)
