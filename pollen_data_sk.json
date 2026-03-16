@@ -60,5 +60,66 @@
         "trend": "➡️ Ustálená"
       }
     }
+  },
+  {
+    "timestamp": "2026-03-16T19:08:13Z",
+    "date": "16.03.2026",
+    "allergens": {
+      "Jelša": {
+        "level": 5,
+        "value": "303",
+        "trend": "⬆️ Stúpa"
+      },
+      "Lieska": {
+        "level": 5,
+        "value": "247",
+        "trend": "⬆️ Stúpa"
+      },
+      "Jaseň": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Topoľ": {
+        "level": 2,
+        "value": "20",
+        "trend": "⬆️ Stúpa"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 2,
+        "value": "16",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Brest": {
+        "level": 2,
+        "value": "7",
+        "trend": "⬆️ Stúpa"
+      },
+      "Alternária": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Čerňovka": {
+        "level": 3,
+        "value": "32",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Nadguľka": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Vŕba": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      }
+    }
   }
 ]
