@@ -1,8 +1,15 @@
 import os
 import json
 import requests
+import socket
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
+
+# Force IPv4 for GitHub Actions compatibility
+import requests.packages.urllib3.util.connection as urllib3_cn
+def allowed_gai_family():
+    return socket.AF_INET
+urllib3_cn.allowed_gai_family = allowed_gai_family
 
 # Configuration
 URL = "https://www.pelovespravodajstvo.sk/verejnost/aktualne"
