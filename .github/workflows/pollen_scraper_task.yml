@@ -2,7 +2,7 @@ name: State Pollen Scraper Task
 
 on:
   schedule:
-    - cron: '0 8 * * *' # 9:00 AM CET
+    - cron: '30 17 * * *' # 18:30 AM CET
   workflow_dispatch:
 
 jobs:
