@@ -1,0 +1,64 @@
+[
+  {
+    "timestamp": "2026-03-16T17:42:15Z",
+    "date": "16.03.2026",
+    "allergens": {
+      "Celé Slovensko": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Bratislavský kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Trnavský kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Nitriansky kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Trenčiansky kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Žilinský kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Banskobystrický kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Prešovský kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Košický kraj": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Ambrózia": {
+        "level": 5,
+        "trend": "⬆️ Stúpa"
+      },
+      "Palina": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Peľ": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Sedmokráska": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      },
+      "Buriny": {
+        "level": 0,
+        "trend": "➡️ Ustálená"
+      }
+    }
+  }
+]
