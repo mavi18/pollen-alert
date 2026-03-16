@@ -96,9 +96,12 @@
     <div class="container">
         <header>
             <h1 id="mainTitle">Pollen Alert Slovakia</h1>
-            <div class="lang-switch" onclick="toggleLang()">
-                <div id="btnEn" class="lang-btn">EN</div>
-                <div id="btnSk" class="lang-btn">SK</div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a id="stateLink" href="index_sk.html" style="font-size: 0.8rem; text-decoration: none; color: var(--accent); font-weight: bold; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 5px;">State Data 🇸🇰</a>
+                <div class="lang-switch" onclick="toggleLang()">
+                    <div id="btnEn" class="lang-btn">EN</div>
+                    <div id="btnSk" class="lang-btn">SK</div>
+                </div>
             </div>
         </header>
         
@@ -115,6 +118,7 @@
         const translations = {
             en: {
                 title: "Pollen Alert Slovakia",
+                stateBtn: "State Data 🇸🇰",
                 lastUpdated: "Last updated: ",
                 unit: "grains/m³",
                 trend: "5-Day Trend",
@@ -123,6 +127,7 @@
             },
             sk: {
                 title: "Peľové spravodajstvo SR",
+                stateBtn: "Štátne dáta 🇸🇰",
                 lastUpdated: "Naposledy aktualizované: ",
                 unit: "zŕn/m³",
                 trend: "5-dňový trend",
@@ -150,6 +155,7 @@
         async function renderData() {
             const t = translations[currentLang];
             document.getElementById('mainTitle').innerText = t.title;
+            document.getElementById('stateLink').innerText = t.stateBtn;
             
             const locale = currentLang === 'sk' ? 'sk-SK' : 'en-US';
             document.getElementById('lastUpdated').innerText = t.lastUpdated + new Date(globalData.last_updated).toLocaleString(locale);
