@@ -2,6 +2,22 @@
 
 A lightweight, automated system that monitors pollen levels in Slovakia, sends push notifications to your iPhone via **ntfy.sh**, and provides a simple web dashboard.
 
+## 🇸🇰 Version 2: State Monitoring (pelovespravodajstvo.sk)
+This version scrapes official data from the Public Health Authority of the Slovak Republic (ÚVZ SR).
+
+### Features
+*   **Official Data:** Scraped from `pelovespravodajstvo.sk`.
+*   **Historical Trends:** Saves up to 10 last measurements to show progress.
+*   **Smart Notifications:** Only notifies you if the pollen level actually changes (e.g., Low -> High).
+*   **Regional Selection:** Support for all 8 Slovak regions.
+
+### Setup (State Version)
+1.  **Secret `KRAJ_ID`:** Add your region ID (1-8) to GitHub Secrets.
+    *   `1`: Bratislava, `2`: Trnava, `3`: Trenčín, `4`: Nitra, `5`: Žilina, `6`: B. Bystrica, `7`: Prešov, `8`: Košice.
+2.  **Dashboard:** Accessible at `index_sk.html`.
+
+---
+
 ## 🚀 How it Works
 1. **GitHub Action:** Runs every day at 7:00 AM CET.
 2. **Backend (Python):** Fetches data from Open-Meteo Air Quality API for your city.

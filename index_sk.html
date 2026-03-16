@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Štátny peľový monitoring SR</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #1c1e21;
+            --green: #42b72a;
+            --orange: #f7b924;
+            --red: #d93025;
+            --accent: #1877f2;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container { max-width: 800px; width: 100%; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 1.5rem; margin-bottom: 5px; color: var(--accent); }
+        .source { font-size: 0.8rem; color: #65676b; }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .status-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .status-card h3 { margin: 0 0 10px 0; font-size: 1rem; }
+        .level-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .level-text { font-weight: bold; display: block; margin: 10px 0; }
+        .trend { font-size: 0.8rem; color: #65676b; }
+
+        .chart-container {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇸🇰 Štátny peľový monitoring</h1>
+            <div class="source">Zdroj: pelovespravodajstvo.sk (ÚVZ SR)</div>
+            <div id="lastUpdated" class="source" style="margin-top: 5px;">Načítavam...</div>
+        </header>
+
+        <div id="statusGrid" class="status-grid"></div>
+
+        <div class="chart-container">
+            <canvas id="historyChart"></canvas>
+        </div>
+
+        <a href="index.html" class="nav-link">← Späť na globálnu predpoveď (Open-Meteo)</a>
+    </div>
+
+    <script>
+        const LEVEL_NAMES = ["Nulová", "Veľmi nízka", "Nízka", "Stredná", "Vysoká", "Veľmi vysoká"];
+        const COLORS = ["#e0e0e0", "#a5d6a7", "#81c784", "#fff176", "#ffb74d", "#ef5350"];
+
+        async function loadData() {
+            try {
+                const response = await fetch('pollen_data_sk.json');
+                const history = await response.json();
+                const latest = history[history.length - 1];
+                
+                document.getElementById('lastUpdated').innerText = `Naposledy aktualizované: ${latest.date}`;
+
+                const grid = document.getElementById('statusGrid');
+                Object.entries(latest.allergens).forEach(([name, info]) => {
+                    const card = document.createElement('div');
+                    card.className = 'status-card';
+                    card.innerHTML = `
+                        <h3>${name}</h3>
+                        <span class="level-text" style="color: ${COLORS[info.level]}">
+                            <span class="level-dot" style="background-color: ${COLORS[info.level]}"></span>
+                            ${LEVEL_NAMES[info.level]}
+                        </span>
+                        <div class="trend">${info.trend}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                // Chart
+                const labels = history.map(h => h.date);
+                const allergenNames = Object.keys(latest.allergens);
+                const datasets = allergenNames.map((name, i) => {
+                    const chartColors = ['#1877f2', '#42b72a', '#f7b924', '#d93025', '#b330f2'];
+                    return {
+                        label: name,
+                        data: history.map(h => h.allergens[name] ? h.allergens[name].level : 0),
+                        borderColor: chartColors[i % chartColors.length],
+                        backgroundColor: chartColors[i % chartColors.length],
+                        tension: 0.2,
+                        fill: false
+                    };
+                });
+
+                new Chart(document.getElementById('historyChart'), {
+                    type: 'line',
+                    data: { labels, datasets },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Historický vývoj hladín' },
+                            legend: { position: 'bottom' }
+                        },
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 5,
+                                ticks: {
+                                    callback: function(value) { return LEVEL_NAMES[value]; }
+                                }
+                            }
+                        }
+                    }
+                });
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('lastUpdated').innerText = "Chyba pri načítaní dát. Skontrolujte GitHub Action.";
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>

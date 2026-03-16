@@ -1,0 +1,37 @@
+name: State Pollen Scraper Task
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # 9:00 AM CET
+  workflow_dispatch:
+
+jobs:
+  scrape-pollen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run scraper
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          KRAJ_ID: ${{ secrets.KRAJ_ID }}
+        run: python pollen_scraper.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pollen_data_sk.json
+          git commit -m "Aktualizácia dát zo štátneho monitoringu: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "Žiadne zmeny"
+          git push
