@@ -278,5 +278,101 @@
         "trend": "➡️ Ustálená"
       }
     }
+  },
+  {
+    "timestamp": "2026-03-31T18:12:06Z",
+    "date": "31.03.2026",
+    "allergens": {
+      "Javor": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      },
+      "Jelša": {
+        "level": 1,
+        "value": "5",
+        "trend": "➡️ Ustálená"
+      },
+      "Breza": {
+        "level": 2,
+        "value": "8",
+        "trend": "➡️ Ustálená"
+      },
+      "Hrab": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      },
+      "Lieska": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      },
+      "Jaseň": {
+        "level": 2,
+        "value": "8",
+        "trend": "➡️ Ustálená"
+      },
+      "Topoľ": {
+        "level": 3,
+        "value": "31",
+        "trend": "➡️ Ustálená"
+      },
+      "Dub": {
+        "level": 2,
+        "value": "6",
+        "trend": "➡️ Ustálená"
+      },
+      "Vŕba": {
+        "level": 1,
+        "value": "3",
+        "trend": "➡️ Ustálená"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 2,
+        "value": "9",
+        "trend": "⬇️ Klesá"
+      },
+      "Brest": {
+        "level": 2,
+        "value": "6",
+        "trend": "➡️ Ustálená"
+      },
+      "Alternária": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Čerňovka": {
+        "level": 2,
+        "value": "21",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Nadguľka": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "4",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Buk": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Smrekovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Platan": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      }
+    }
   }
 ]
