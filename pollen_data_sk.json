@@ -687,5 +687,131 @@
         "trend": "↗️ Ustálená/Stúpa"
       }
     }
+  },
+  {
+    "timestamp": "2026-04-29T18:55:58Z",
+    "date": "29.04.2026",
+    "allergens": {
+      "Javor": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Breza": {
+        "level": 4,
+        "value": "146",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Hrab": {
+        "level": 1,
+        "value": "3",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Buk": {
+        "level": 4,
+        "value": "52",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Jaseň": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Orech": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Platan": {
+        "level": 1,
+        "value": "3",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Dub": {
+        "level": 2,
+        "value": "26",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Ružovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Vŕba": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "4",
+        "trend": "➡️ Ustálená"
+      },
+      "Alternária": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Čerňovka": {
+        "level": 2,
+        "value": "27",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Pagaštan": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Lipnicovité-trávy": {
+        "level": 2,
+        "value": "6",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Štiav": {
+        "level": 2,
+        "value": "6",
+        "trend": "➡️ Ustálená"
+      },
+      "Lipa": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Jelša": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Zlatovka": {
+        "level": 2,
+        "value": "8",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Smrekovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Topoľ": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Brest": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Pŕhľavovité": {
+        "level": 2,
+        "value": "17",
+        "trend": "➡️ Ustálená"
+      }
+    }
   }
 ]
