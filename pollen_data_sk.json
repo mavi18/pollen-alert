@@ -813,5 +813,121 @@
         "trend": "➡️ Ustálená"
       }
     }
+  },
+  {
+    "timestamp": "2026-05-06T19:09:59Z",
+    "date": "06.05.2026",
+    "allergens": {
+      "Javor": {
+        "level": 1,
+        "value": "3",
+        "trend": "⬆️ Stúpa"
+      },
+      "Pagaštan": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Breza": {
+        "level": 3,
+        "value": "37",
+        "trend": "⬆️ Stúpa"
+      },
+      "Buk": {
+        "level": 2,
+        "value": "28",
+        "trend": "⬆️ Stúpa"
+      },
+      "Jaseň": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Orech": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      },
+      "Platan": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Lipnicovité-trávy": {
+        "level": 1,
+        "value": "5",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Dub": {
+        "level": 3,
+        "value": "42",
+        "trend": "⬆️ Stúpa"
+      },
+      "Vŕba": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      },
+      "Baza": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Pŕhľavovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Alternária": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Čerňovka": {
+        "level": 2,
+        "value": "17",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Štiav": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      },
+      "Nadguľka": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Ostrica": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      },
+      "Hrab": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Smrekovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Topoľ": {
+        "level": 1,
+        "value": "5",
+        "trend": "⬆️ Stúpa"
+      },
+      "Ružovité": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      }
+    }
   }
 ]
