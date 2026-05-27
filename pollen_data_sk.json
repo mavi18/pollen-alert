@@ -1,67 +1,5 @@
 [
   {
-    "timestamp": "2026-03-16T17:42:15Z",
-    "date": "16.03.2026",
-    "allergens": {
-      "Celé Slovensko": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Bratislavský kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Trnavský kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Nitriansky kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Trenčiansky kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Žilinský kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Banskobystrický kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Prešovský kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Košický kraj": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Ambrózia": {
-        "level": 5,
-        "trend": "⬆️ Stúpa"
-      },
-      "Palina": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Peľ": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Sedmokráska": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      },
-      "Buriny": {
-        "level": 0,
-        "trend": "➡️ Ustálená"
-      }
-    }
-  },
-  {
     "timestamp": "2026-03-16T19:08:13Z",
     "date": "16.03.2026",
     "allergens": {
@@ -1179,6 +1117,127 @@
         "level": 1,
         "value": "2",
         "trend": "⬆️ Stúpa"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-05-27T19:36:19Z",
+    "date": "27.05.2026",
+    "allergens": {
+      "Breza": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Orech": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Skorocel": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Lipnicovité-trávy": {
+        "level": 3,
+        "value": "31",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Dub": {
+        "level": 2,
+        "value": "8",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Štiav": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Baza": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Lipa": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Pŕhľavovité": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Alternária": {
+        "level": 1,
+        "value": "3",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Čerňovka": {
+        "level": 5,
+        "value": "291",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Nadguľka": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Buk": {
+        "level": 2,
+        "value": "6",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Agát": {
+        "level": 1,
+        "value": "4",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Javor": {
+        "level": 2,
+        "value": "7",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Pagaštan": {
+        "level": 1,
+        "value": "4",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Jaseň": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Červospórovec": {
+        "level": 1,
+        "value": "5",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Mrkvovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Ružovité": {
+        "level": 1,
+        "value": "3",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Polythrincium": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
       }
     }
   }
