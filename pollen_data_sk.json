@@ -1,101 +1,5 @@
 [
   {
-    "timestamp": "2026-03-31T18:12:06Z",
-    "date": "31.03.2026",
-    "allergens": {
-      "Javor": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      },
-      "Jelša": {
-        "level": 1,
-        "value": "5",
-        "trend": "➡️ Ustálená"
-      },
-      "Breza": {
-        "level": 2,
-        "value": "8",
-        "trend": "➡️ Ustálená"
-      },
-      "Hrab": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      },
-      "Lieska": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      },
-      "Jaseň": {
-        "level": 2,
-        "value": "8",
-        "trend": "➡️ Ustálená"
-      },
-      "Topoľ": {
-        "level": 3,
-        "value": "31",
-        "trend": "➡️ Ustálená"
-      },
-      "Dub": {
-        "level": 2,
-        "value": "6",
-        "trend": "➡️ Ustálená"
-      },
-      "Vŕba": {
-        "level": 1,
-        "value": "3",
-        "trend": "➡️ Ustálená"
-      },
-      "Tisovité-cyprusovité": {
-        "level": 2,
-        "value": "9",
-        "trend": "⬇️ Klesá"
-      },
-      "Brest": {
-        "level": 2,
-        "value": "6",
-        "trend": "➡️ Ustálená"
-      },
-      "Alternária": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Čerňovka": {
-        "level": 2,
-        "value": "21",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Nadguľka": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Tyčinkovec": {
-        "level": 1,
-        "value": "4",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Buk": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Smrekovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Platan": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      }
-    }
-  },
-  {
     "timestamp": "2026-04-09T18:33:19Z",
     "date": "09.04.2026",
     "allergens": {
@@ -1363,6 +1267,112 @@
         "level": 1,
         "value": "1",
         "trend": "↗️ Ustálená/Stúpa"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-06-24T19:12:30Z",
+    "date": "24.06.2026",
+    "allergens": {
+      "Pajaseň": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Gaštan": {
+        "level": 1,
+        "value": "4",
+        "trend": "⬆️ Stúpa"
+      },
+      "Mrlíkovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Skorocel": {
+        "level": 1,
+        "value": "4",
+        "trend": "➡️ Ustálená"
+      },
+      "Lipnicovité-trávy": {
+        "level": 2,
+        "value": "12",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Štiav": {
+        "level": 2,
+        "value": "6",
+        "trend": "➡️ Ustálená"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "4",
+        "trend": "➡️ Ustálená"
+      },
+      "Lipa": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Pŕhľavovité": {
+        "level": 2,
+        "value": "22",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Alternária": {
+        "level": 2,
+        "value": "7",
+        "trend": "⬆️ Stúpa"
+      },
+      "Čerňovka": {
+        "level": 5,
+        "value": "456",
+        "trend": "⬆️ Stúpa"
+      },
+      "Nadguľka": {
+        "level": 2,
+        "value": "6",
+        "trend": "⬆️ Stúpa"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Mrkvovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Astrovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Dub": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
+      },
+      "Agát": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Baza": {
+        "level": 2,
+        "value": "28",
+        "trend": "⬆️ Stúpa"
+      },
+      "Červospórovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Polythrincium": {
+        "level": 1,
+        "value": "2",
+        "trend": "⬆️ Stúpa"
       }
     }
   }
