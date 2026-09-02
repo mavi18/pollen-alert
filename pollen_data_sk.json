@@ -1,101 +1,5 @@
 [
   {
-    "timestamp": "2026-06-18T19:38:53Z",
-    "date": "18.06.2026",
-    "allergens": {
-      "Pajaseň": {
-        "level": 1,
-        "value": "2",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Gaštan": {
-        "level": 1,
-        "value": "3",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Skorocel": {
-        "level": 1,
-        "value": "4",
-        "trend": "➡️ Ustálená"
-      },
-      "Lipnicovité-trávy": {
-        "level": 2,
-        "value": "14",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Štiav": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Baza": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Tisovité-cyprusovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Lipa": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Pŕhľavovité": {
-        "level": 2,
-        "value": "8",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Alternária": {
-        "level": 2,
-        "value": "6",
-        "trend": "⬆️ Stúpa"
-      },
-      "Čerňovka": {
-        "level": 5,
-        "value": "259",
-        "trend": "⬆️ Stúpa"
-      },
-      "Nadguľka": {
-        "level": 1,
-        "value": "5",
-        "trend": "⬆️ Stúpa"
-      },
-      "Červospórovec": {
-        "level": 2,
-        "value": "11",
-        "trend": "⬆️ Stúpa"
-      },
-      "Mrlíkovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Dub": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Tyčinkovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "⬆️ Stúpa"
-      },
-      "Breza": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Ružovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      }
-    }
-  },
-  {
     "timestamp": "2026-06-24T19:12:30Z",
     "date": "24.06.2026",
     "allergens": {
@@ -1108,6 +1012,102 @@
         "level": 1,
         "value": "1",
         "trend": "↗️ Ustálená/Stúpa"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-02T20:01:04Z",
+    "date": "02.09.2026",
+    "allergens": {
+      "Ambrózia": {
+        "level": 2,
+        "value": "8",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Palina": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Mrlíkovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Chmeľ": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Skorocel": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "3",
+        "trend": "➡️ Ustálená"
+      },
+      "Pŕhľavovité": {
+        "level": 2,
+        "value": "7",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Alternária": {
+        "level": 3,
+        "value": "47",
+        "trend": "⬆️ Stúpa"
+      },
+      "Čerňovka": {
+        "level": 5,
+        "value": "498",
+        "trend": "⬆️ Stúpa"
+      },
+      "Nadguľka": {
+        "level": 2,
+        "value": "6",
+        "trend": "⬆️ Stúpa"
+      },
+      "Mrkvovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Astrovité": {
+        "level": 1,
+        "value": "2",
+        "trend": "↗️ Ustálená/Stúpa"
+      },
+      "Cyprusovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Lipnicovité-trávy": {
+        "level": 1,
+        "value": "2",
+        "trend": "➡️ Ustálená"
+      },
+      "Štiav": {
+        "level": 1,
+        "value": "5",
+        "trend": "➡️ Ustálená"
+      },
+      "Tyčinkovec": {
+        "level": 2,
+        "value": "10",
+        "trend": "⬆️ Stúpa"
+      },
+      "Červospórovec": {
+        "level": 2,
+        "value": "15",
+        "trend": "⬆️ Stúpa"
+      },
+      "Polythrincium": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
       }
     }
   }
