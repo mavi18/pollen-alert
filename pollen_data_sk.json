@@ -1,106 +1,5 @@
 [
   {
-    "timestamp": "2026-07-08T18:53:52Z",
-    "date": "08.07.2026",
-    "allergens": {
-      "Ambrózia": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Mrkvovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Astrovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Gaštan": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Mrlíkovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Skorocel": {
-        "level": 1,
-        "value": "2",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Lipnicovité-trávy": {
-        "level": 2,
-        "value": "11",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Tisovité-cyprusovité": {
-        "level": 1,
-        "value": "2",
-        "trend": "↘️ Ustálená/Klesá"
-      },
-      "Lipa": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Pŕhľavovité": {
-        "level": 2,
-        "value": "15",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Alternária": {
-        "level": 2,
-        "value": "24",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Čerňovka": {
-        "level": 5,
-        "value": "552",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Nadguľka": {
-        "level": 1,
-        "value": "3",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Štiav": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Tyčinkovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Pajaseň": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Ostrica": {
-        "level": 1,
-        "value": "3",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Dub": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Červospórovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      }
-    }
-  },
-  {
     "timestamp": "2026-07-17T18:34:14Z",
     "date": "17.07.2026",
     "allergens": {
@@ -1058,6 +957,82 @@
         "level": 1,
         "value": "1",
         "trend": "⬆️ Stúpa"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-23T20:36:40Z",
+    "date": "23.09.2026",
+    "allergens": {
+      "Ambrózia": {
+        "level": 1,
+        "value": "4",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Palina": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Mrlíkovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Chmeľ": {
+        "level": 1,
+        "value": "1",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Lipnicovité-trávy": {
+        "level": 1,
+        "value": "3",
+        "trend": "➡️ Ustálená"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Pŕhľavovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Alternária": {
+        "level": 3,
+        "value": "32",
+        "trend": "⬆️ Stúpa"
+      },
+      "Čerňovka": {
+        "level": 5,
+        "value": "476",
+        "trend": "⬆️ Stúpa"
+      },
+      "Nadguľka": {
+        "level": 2,
+        "value": "6",
+        "trend": "⬆️ Stúpa"
+      },
+      "Polythrincium": {
+        "level": 1,
+        "value": "1",
+        "trend": "⬆️ Stúpa"
+      },
+      "Tyčinkovec": {
+        "level": 2,
+        "value": "8",
+        "trend": "⬆️ Stúpa"
+      },
+      "Červospórovec": {
+        "level": 4,
+        "value": "100",
+        "trend": "⬆️ Stúpa"
+      },
+      "Skorocel": {
+        "level": 1,
+        "value": "1",
+        "trend": "↘️ Ustálená/Klesá"
       }
     }
   }
