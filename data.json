@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-28T20:19:16Z",
+  "last_updated": "2026-09-29T19:00:05Z",
   "city_coords": [
     48.1486,
     17.1077
@@ -7,39 +7,30 @@
   "threshold": 10.0,
   "daily_data": [
     {
-      "date": "2026-09-28",
-      "allergens": {
-        "birch": 0,
-        "ragweed": 8.3,
-        "alder": 0,
-        "mugwort": 13.2
-      }
-    },
-    {
       "date": "2026-09-29",
       "allergens": {
         "birch": 0,
-        "ragweed": 0.6,
+        "ragweed": 4.3,
         "alder": 0,
-        "mugwort": 9.7
+        "mugwort": 10.4
       }
     },
     {
       "date": "2026-09-30",
       "allergens": {
         "birch": 0,
-        "ragweed": 0,
+        "ragweed": 0.6,
         "alder": 0,
-        "mugwort": 8.4
+        "mugwort": 7.7
       }
     },
     {
       "date": "2026-10-01",
       "allergens": {
         "birch": 0,
-        "ragweed": 0,
+        "ragweed": 0.3,
         "alder": 0,
-        "mugwort": 8.2
+        "mugwort": 7.9
       }
     },
     {
@@ -48,7 +39,16 @@
         "birch": 0,
         "ragweed": 0,
         "alder": 0,
-        "mugwort": 7.3
+        "mugwort": 9.4
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "allergens": {
+        "birch": 0,
+        "ragweed": 0,
+        "alder": 0,
+        "mugwort": 7.8
       }
     }
   ],
