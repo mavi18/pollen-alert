@@ -1,96 +1,5 @@
 [
   {
-    "timestamp": "2026-07-29T18:31:55Z",
-    "date": "29.07.2026",
-    "allergens": {
-      "Ambrózia": {
-        "level": 1,
-        "value": "2",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Mrlíkovité": {
-        "level": 1,
-        "value": "4",
-        "trend": "➡️ Ustálená"
-      },
-      "Chmeľ": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Skorocel": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      },
-      "Lipnicovité-trávy": {
-        "level": 1,
-        "value": "2",
-        "trend": "➡️ Ustálená"
-      },
-      "Tisovité-cyprusovité": {
-        "level": 1,
-        "value": "3",
-        "trend": "➡️ Ustálená"
-      },
-      "Pŕhľavovité": {
-        "level": 3,
-        "value": "45",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Alternária": {
-        "level": 4,
-        "value": "68",
-        "trend": "⬆️ Stúpa"
-      },
-      "Čerňovka": {
-        "level": 5,
-        "value": "866",
-        "trend": "⬆️ Stúpa"
-      },
-      "Nadguľka": {
-        "level": 2,
-        "value": "10",
-        "trend": "⬆️ Stúpa"
-      },
-      "Polythrincium": {
-        "level": 1,
-        "value": "5",
-        "trend": "⬆️ Stúpa"
-      },
-      "Štiav": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Tyčinkovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "⬆️ Stúpa"
-      },
-      "Mrkvovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Palina": {
-        "level": 1,
-        "value": "1",
-        "trend": "➡️ Ustálená"
-      },
-      "Astrovité": {
-        "level": 1,
-        "value": "1",
-        "trend": "↗️ Ustálená/Stúpa"
-      },
-      "Červospórovec": {
-        "level": 1,
-        "value": "1",
-        "trend": "⬆️ Stúpa"
-      }
-    }
-  },
-  {
     "timestamp": "2026-08-05T19:02:27Z",
     "date": "05.08.2026",
     "allergens": {
@@ -980,6 +889,72 @@
         "trend": "↘️ Ustálená/Klesá"
       },
       "Astrovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "↘️ Ustálená/Klesá"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-10-14T20:52:52Z",
+    "date": "14.10.2026",
+    "allergens": {
+      "Ambrózia": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Mrlíkovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Skorocel": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Tisovité-cyprusovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Pŕhľavovité": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Alternária": {
+        "level": 2,
+        "value": "12",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Čerňovka": {
+        "level": 4,
+        "value": "120",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Nadguľka": {
+        "level": 1,
+        "value": "3",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Lipnicovité-trávy": {
+        "level": 1,
+        "value": "1",
+        "trend": "➡️ Ustálená"
+      },
+      "Červospórovec": {
+        "level": 2,
+        "value": "6",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Tyčinkovec": {
+        "level": 1,
+        "value": "1",
+        "trend": "↘️ Ustálená/Klesá"
+      },
+      "Polythrincium": {
         "level": 1,
         "value": "1",
         "trend": "↘️ Ustálená/Klesá"
